@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "879624184943",
+    "project_id": "fitness-4f0e8",
+    "storage_bucket": "fitness-4f0e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879624184943:android:17e0dc3a7ca56f1798d99a",
+        "android_client_info": {
+          "package_name": "com.sbcali.fitness2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "879624184943-g9vrq9au6d5vv84c6p72sairps4385s2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDekywSOrc4HYYiZy_OjW7_c7F3O3f7EYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "879624184943-g9vrq9au6d5vv84c6p72sairps4385s2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "879624184943-7qdfo2ksqa7km3t3heqn29ik0he2pdsv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sbcali.fitness2"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
