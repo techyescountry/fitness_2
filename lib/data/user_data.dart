@@ -21,18 +21,18 @@ class UserData {
     if (json['workouts'] != null) {
       List<WorkoutData> workouts = [];
       json['workouts'].forEach((v) {
-        workouts.add(new WorkoutData.fromJson(v));
+        workouts.add(WorkoutData.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['photo'] = this.photo;
-    data['mail'] = this.mail;
-    if (this.workouts != null) {
-      data['workouts'] = this.workouts!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['photo'] = photo;
+    data['mail'] = mail;
+    if (workouts != null) {
+      data['workouts'] = workouts!.map((v) => v.toJson()).toList();
     }
     return data;
   }

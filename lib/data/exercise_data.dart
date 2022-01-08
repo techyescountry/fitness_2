@@ -31,18 +31,18 @@ class ExerciseData {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['minutes'] = this.minutes;
-    data['progress'] = this.progress;
-    data['video'] = this.video;
-    data['description'] = this.description;
-    data['steps'] = this.steps;
+    data['id'] = id;
+    data['title'] = title;
+    data['minutes'] = minutes;
+    data['progress'] = progress;
+    data['video'] = video;
+    data['description'] = description;
+    data['steps'] = steps;
     return data;
   }
 
   String toJsonString() {
-    final str = json.encode(this.toJson());
+    final str = json.encode(toJson());
     return str;
   }
 }

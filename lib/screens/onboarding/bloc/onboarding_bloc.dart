@@ -22,7 +22,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
 
       pageController.animateToPage(
         pageIndex,
-        duration: Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 500),
         curve: Curves.ease,
       );
       yield PageChangedState(counter: pageIndex);

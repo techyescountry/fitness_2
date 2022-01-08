@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 class OnboardingTile extends StatelessWidget {
   final title, imagePath, mainText;
 
-  OnboardingTile({this.imagePath, this.mainText, this.title});
+  const OnboardingTile({Key? key, this.imagePath, this.mainText, this.title})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         children: [
-          SizedBox(height: 34),
+          const SizedBox(height: 34),
           Expanded(
             child: Image(
               image: AssetImage(imagePath),
@@ -21,7 +22,7 @@ class OnboardingTile extends StatelessWidget {
           const SizedBox(height: 65),
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.w700,
               fontSize: 24.0,
             ),
@@ -33,7 +34,7 @@ class OnboardingTile extends StatelessWidget {
             ),
             child: Text(
               mainText,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16.0,
               ),
               textAlign: TextAlign.center,

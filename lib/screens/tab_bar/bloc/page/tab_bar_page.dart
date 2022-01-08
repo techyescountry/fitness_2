@@ -64,6 +64,6 @@ class TabBarPage extends StatelessWidget {
 
   Widget _createBody(BuildContext context, int index) {
     // final children = [HomePage(), WorkoutsPage(), SettingsScreen()];
-    return EmptyWidget(); //children[index];
+    return const EmptyWidget(); //children[index];
   }
 }

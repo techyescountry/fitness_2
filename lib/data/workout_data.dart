@@ -41,23 +41,23 @@ class WorkoutData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['exercises'] = this.exercises;
-    data['minutes'] = this.minutes;
-    data['currentProgress'] = this.currentProgress;
-    data['progress'] = this.progress;
-    data['image'] = this.image;
-    if (this.exerciseDataList != null) {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
+    data['exercises'] = exercises;
+    data['minutes'] = minutes;
+    data['currentProgress'] = currentProgress;
+    data['progress'] = progress;
+    data['image'] = image;
+    if (exerciseDataList != null) {
       data['exerciseDataList'] =
-          this.exerciseDataList!.map((v) => v.toJson()).toList();
+          exerciseDataList!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 
   String toJsonString() {
-    final str = json.encode(this.toJson());
+    final str = json.encode(toJson());
     return str;
   }
 }

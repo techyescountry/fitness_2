@@ -58,7 +58,7 @@ class OnboardingContent extends StatelessWidget {
   Widget _createStatic(OnboardingBloc bloc) {
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         BlocBuilder<OnboardingBloc, OnboardingState>(
@@ -67,36 +67,36 @@ class OnboardingContent extends StatelessWidget {
             return DotsIndicator(
               dotsCount: 3,
               position: bloc.pageIndex.toDouble(),
-              decorator: DotsDecorator(
+              decorator: const DotsDecorator(
                 color: Colors.grey,
                 activeColor: ColorConstants.primaryColor,
               ),
             );
           },
         ),
-        Spacer(),
+        const Spacer(),
         BlocBuilder<OnboardingBloc, OnboardingState>(
           buildWhen: (_, currState) => currState is PageChangedState,
           builder: (context, state) {
             final percent = _getPercent(bloc.pageIndex);
             return TweenAnimationBuilder<double>(
                 tween: Tween<double>(begin: 0, end: percent),
-                duration: Duration(seconds: 1),
+                duration: const Duration(seconds: 1),
                 builder: (context, value, _) => CircularPercentIndicator(
                       radius: 110,
                       backgroundColor: ColorConstants.primaryColor,
                       progressColor: Colors.white,
                       percent: 1 - value,
                       center: Material(
-                        shape: CircleBorder(),
+                        shape: const CircleBorder(),
                         color: ColorConstants.primaryColor,
                         child: RawMaterialButton(
-                          shape: CircleBorder(),
+                          shape: const CircleBorder(),
                           onPressed: () {
                             bloc.add(PageChangedEvent());
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.all(24.0),
+                          child: const Padding(
+                            padding: EdgeInsets.all(24.0),
                             child: Icon(
                               Icons.east_rounded,
                               size: 38.0,
@@ -108,7 +108,7 @@ class OnboardingContent extends StatelessWidget {
                     ));
           },
         ),
-        SizedBox(height: 30),
+        const SizedBox(height: 30),
       ],
     );
   }

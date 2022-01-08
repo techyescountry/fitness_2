@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:fitness_2/core/service/auth_service.dart';
 import 'package:fitness_2/core/service/validation_service.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 
 part 'sign_in_event.dart';
 part 'sign_in_state.dart';
