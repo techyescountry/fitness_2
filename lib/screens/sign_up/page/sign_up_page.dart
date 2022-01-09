@@ -1,5 +1,5 @@
 import 'package:fitness_2/screens/common_widgets/empty_widget.dart';
-import 'package:fitness_2/screens/sign_in/bloc/page/sign_in_page.dart';
+import 'package:fitness_2/screens/sign_in/page/sign_in_page.dart';
 import 'package:fitness_2/screens/sign_up/bloc/sign_up_bloc.dart';
 import 'package:fitness_2/screens/sign_up/widget/sign_up_content.dart';
 import 'package:flutter/material.dart';

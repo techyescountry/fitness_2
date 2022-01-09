@@ -7,7 +7,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   int pageIndex = 0;
   final pageController = PageController(initialPage: 0);
   OnboardingBloc() : super(OnboardingInitial()) {
-    on<PageChangedEvent>((event, emit) {
+    on<PageChangedEvent>((event, emit) async {
       if (pageIndex == 2) {
         emit(NextScreenState());
         return;
@@ -16,14 +16,14 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
 
       pageController.animateToPage(
         pageIndex,
-        duration: Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 500),
         curve: Curves.ease,
       );
 
       emit(PageChangedState(counter: pageIndex));
     });
 
-    on<PageSwipedEvent>((event, emit) {
+    on<PageSwipedEvent>((event, emit) async {
       pageIndex = event.index;
       emit(PageChangedState(counter: pageIndex));
     });

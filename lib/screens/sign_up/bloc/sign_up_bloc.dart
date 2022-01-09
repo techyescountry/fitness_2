@@ -4,47 +4,42 @@ import 'package:bloc/bloc.dart';
 import 'package:fitness_2/core/service/auth_service.dart';
 import 'package:fitness_2/core/service/validation_service.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 
 part 'sign_up_event.dart';
 part 'sign_up_state.dart';
 
 class SignUpBloc extends Bloc<SignupEvent, SignUpState> {
-  SignUpBloc() : super(SignupInitial());
-
   final userNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
 
   bool isButtonEnabled = false;
-
-  @override
-  Stream<SignUpState> mapEventToState(
-    SignupEvent event,
-  ) async* {
-    if (event is OnTextChangedEvent) {
+  SignUpBloc() : super(SignupInitial()) {
+    on<OnTextChangedEvent>((event, emit) async {
       if (isButtonEnabled != checkIfSignUpButtonEnabled()) {
         isButtonEnabled = checkIfSignUpButtonEnabled();
-        yield SignUpButtonEnableChangedState(isEnabled: isButtonEnabled);
+        emit(SignUpButtonEnableChangedState(isEnabled: isButtonEnabled));
       }
-    } else if (event is SignUpTappedEvent) {
+    });
+    on<SignUpTappedEvent>((event, emit) async {
       if (checkValidatorsOfTextField()) {
         try {
-          yield LoadingState();
+          emit(LoadingState());
           await AuthService.signUp(emailController.text,
               passwordController.text, userNameController.text);
-          yield NextTabBarPageState();
+          emit(NextTabBarPageState());
           print("Go to the next page");
         } catch (e) {
-          yield ErrorState(message: e.toString());
+          emit(ErrorState(message: e.toString()));
         }
       } else {
-        yield ShowErrorState();
+        emit(ShowErrorState());
       }
-    } else if (event is SignInTappedEvent) {
-      yield NextSignInPageState();
-    }
+    });
+    on<SignInTappedEvent>((event, emit) async {
+      emit(NextSignInPageState());
+    });
   }
 
   bool checkIfSignUpButtonEnabled() {

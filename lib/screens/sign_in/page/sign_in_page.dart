@@ -4,7 +4,7 @@ import 'package:fitness_2/screens/sign_up/page/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../sign_in_bloc.dart';
+import '../bloc/sign_in_bloc.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);

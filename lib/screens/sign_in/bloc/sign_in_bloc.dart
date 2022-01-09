@@ -7,42 +7,42 @@ part 'sign_in_event.dart';
 part 'sign_in_state.dart';
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
-  SignInBloc() : super(SignInInitial());
-
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   bool isButtonEnabled = false;
-
-  @override
-  Stream<SignInState> mapEventToState(
-    SignInEvent event,
-  ) async* {
-    if (event is OnTextChangeEvent) {
+  SignInBloc() : super(SignInInitial()) {
+    on<OnTextChangeEvent>((event, emit) async {
       if (isButtonEnabled != _checkIfSignInButtonEnabled()) {
         isButtonEnabled = _checkIfSignInButtonEnabled();
-        yield SignInButtonEnableChangedState(isEnabled: isButtonEnabled);
+        emit(SignInButtonEnableChangedState(isEnabled: isButtonEnabled));
       }
-    } else if (event is SignInTappedEvent) {
+    });
+
+    on<SignInTappedEvent>((event, emit) async {
       if (_checkValidatorsOfTextField()) {
         try {
-          yield LoadingState();
+          emit(LoadingState());
           await AuthService.signIn(
               emailController.text, passwordController.text);
-          yield NextTabBarPageState();
+          emit(NextTabBarPageState());
           print("Go to the next page");
         } catch (e) {
           print('E to tstrng: ' + e.toString());
-          yield ErrorState(message: e.toString());
+          emit(ErrorState(message: e.toString()));
         }
       } else {
-        yield ShowErrorState();
+        emit(ShowErrorState());
       }
-    } else if (event is ForgotPasswordTappedEvent) {
-      yield NextForgotPasswordPageState();
-    } else if (event is SignUpTappedEvent) {
-      yield NextSignUpPageState();
-    }
+    });
+
+    on<ForgotPasswordTappedEvent>((event, emit) async {
+      emit(NextForgotPasswordPageState());
+    });
+
+    on<SignUpTappedEvent>((event, emit) async {
+      emit(NextSignUpPageState());
+    });
   }
 
   bool _checkIfSignInButtonEnabled() {

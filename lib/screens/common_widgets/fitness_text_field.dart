@@ -1,7 +1,6 @@
 import 'package:fitness_2/core/const/color_constants.dart';
 import 'package:fitness_2/core/const/path_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class FitnessTextField extends StatefulWidget {
   final String title;
