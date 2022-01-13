@@ -1,8 +1,10 @@
 import 'package:fitness_2/core/const/color_constants.dart';
 import 'package:fitness_2/core/const/path_constants.dart';
 import 'package:fitness_2/core/const/text_constants.dart';
-import 'package:fitness_2/screens/common_widgets/empty_widget.dart';
+import 'package:fitness_2/screens/home/pages/home_page.dart';
+import 'package:fitness_2/screens/sign_in/page/sign_in_page.dart';
 import 'package:fitness_2/screens/tab_bar/bloc/tab_bar_bloc.dart';
+import 'package:fitness_2/screens/workouts/page/workouts_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -63,7 +65,11 @@ class TabBarPage extends StatelessWidget {
   }
 
   Widget _createBody(BuildContext context, int index) {
-    // final children = [HomePage(), WorkoutsPage(), SettingsScreen()];
-    return const EmptyWidget(); //children[index];
+    final children = [
+      const HomePage(),
+      const WorkoutsPage(),
+      const SignInPage()
+    ]; //SettingsScreen()
+    return children[index];
   }
 }

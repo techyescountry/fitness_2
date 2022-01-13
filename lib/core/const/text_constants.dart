@@ -1,4 +1,7 @@
 class TextConstants {
+  // Common
+  static const String start = "Start";
+  static const String continueT = "ContinueT";
   // Onboarding
   static const String onboarding1Title = "Workout anywhere";
   static const String onboarding2Title = "Learn techniques";
@@ -47,6 +50,11 @@ class TextConstants {
   static const String settingsIcon = "Settings";
 
   // Home screen
+  static const String didYouKnow = "Did you know...";
+  static const String sportActivity = "Sport activity improves memory!";
+  static const String signToStart = "Soo, let's sign in to start right now!";
+  static const String startWorkout = "Start Workout!";
+
   static const String checkActivity = "Let's check your activity";
   static const String finished = "Finished";
   static const String completedWorkouts = "Completed workouts";
@@ -118,6 +126,7 @@ class TextConstants {
   static const int warriorPoseMinutes = 12;
 
   // Start Workout screen
+  static const String finish = "Finish";
   static const String back = "Back";
   static const String next = "Next";
   static const String nextExercise = "Next Exercise:";

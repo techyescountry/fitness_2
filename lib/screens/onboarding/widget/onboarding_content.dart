@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OnboardingContent extends StatelessWidget {
-  OnboardingContent({Key? key}) : super(key: key);
+  const OnboardingContent({Key? key}) : super(key: key);
 
   double _getPercent(int pageIndex) {
     switch (pageIndex) {

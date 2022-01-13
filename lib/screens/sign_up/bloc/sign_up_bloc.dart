@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:fitness_2/core/service/auth_service.dart';
 import 'package:fitness_2/core/service/validation_service.dart';
