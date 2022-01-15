@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_2/core/const/path_constants.dart';
 import 'package:fitness_2/core/const/text_constants.dart';
@@ -8,14 +7,14 @@ import 'package:fitness_2/core/const/color_constants.dart';
 import 'package:fitness_2/screens/common_widgets/settings_container.dart';
 import 'package:fitness_2/screens/edit_account/edit_account_screen.dart';
 import 'package:fitness_2/screens/reminder/page/reminder_page.dart';
-import 'package:fitness_2/screens/settings/bloc/bloc/settings_bloc.dart';
+import 'package:fitness_2/screens/settings/bloc/settings_bloc.dart';
 import 'package:fitness_2/screens/sign_in/page/sign_in_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'bloc/bloc/settings_bloc.dart';
+import 'bloc/settings_bloc.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -32,12 +31,12 @@ class _SettingsScreenState extends State {
   }
 
   BlocProvider _buildContext(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<SettingsBloc>(
       create: (context) => SettingsBloc(),
       child: BlocConsumer(
         buildWhen: (_, currState) => currState is SettingsInitial,
         builder: (context, state) {
-          final bloc = BlocProvider.of(context);
+          final bloc = BlocProvider.of<SettingsBloc>(context);
           if (state is SettingsInitial) {
             bloc.add(SettingsReloadDisplayNameEvent());
             bloc.add(SettingsReloadImageEvent());
@@ -53,7 +52,7 @@ class _SettingsScreenState extends State {
   Widget _settingsContent(BuildContext context) {
     final User? user = FirebaseAuth.instance.currentUser;
     // final displayName = user?.displayName ?? "No Username";
-    photoUrl = user?.photoURL ?? null;
+    photoUrl = user?.photoURL;
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -92,16 +91,17 @@ class _SettingsScreenState extends State {
                         MaterialPageRoute(
                             builder: (context) => EditAccountScreen()));
                     setState(() {
-                      photoUrl = user?.photoURL ?? null;
+                      photoUrl = user?.photoURL;
                     });
                   },
                   style: TextButton.styleFrom(
-                      shape: CircleBorder(),
+                      shape: const CircleBorder(),
                       backgroundColor:
                           ColorConstants.primaryColor.withOpacity(0.16)),
-                  child: Icon(Icons.edit, color: ColorConstants.primaryColor)),
+                  child: const Icon(Icons.edit,
+                      color: ColorConstants.primaryColor)),
             ]),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             BlocBuilder(
               buildWhen: (_, currState) =>
                   currState is SettingsReloadDisplayNameState,
@@ -111,13 +111,14 @@ class _SettingsScreenState extends State {
                     : null;
                 return Text(
                   '$displayName',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 24, fontWeight: FontWeight.bold),
                 );
               },
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             SettingsContainer(
-              child: Text(TextConstants.reminder,
+              child: const Text(TextConstants.reminder,
                   style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
               withArrow: true,
               onTap: () {
@@ -129,9 +130,9 @@ class _SettingsScreenState extends State {
               SettingsContainer(
                 child: Text(
                     TextConstants.rateUsOn +
-                        '${Platform.isIOS ? 'App store' : 'Play market'}',
-                    style:
-                        TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
+                        (Platform.isIOS ? 'App store' : 'Play market'),
+                    style: const TextStyle(
+                        fontSize: 17, fontWeight: FontWeight.w500)),
                 onTap: () {
                   return launch(Platform.isIOS
                       ? 'https://www.apple.com/app-store/'
@@ -140,11 +141,11 @@ class _SettingsScreenState extends State {
               ),
             SettingsContainer(
                 onTap: () => launch('https://perpet.io/'),
-                child: Text(TextConstants.terms,
+                child: const Text(TextConstants.terms,
                     style:
                         TextStyle(fontSize: 17, fontWeight: FontWeight.w500))),
             SettingsContainer(
-                child: Text(TextConstants.signOut,
+                child: const Text(TextConstants.signOut,
                     style:
                         TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
                 onTap: () {
@@ -152,11 +153,11 @@ class _SettingsScreenState extends State {
                   Navigator.pushReplacement(
                       context, MaterialPageRoute(builder: (_) => SignInPage()));
                 }),
-            SizedBox(height: 15),
-            Text(TextConstants.joinUs,
+            const SizedBox(height: 15),
+            const Text(TextConstants.joinUs,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
-            SizedBox(height: 15),
-            _createJoinSocialMedia(),
+            const SizedBox(height: 15),
+            const _createJoinSocialMedia(),
           ]),
         ),
       ),
@@ -177,21 +178,21 @@ class _createJoinSocialMedia extends StatelessWidget {
         TextButton(
             onPressed: () => launch('https://www.facebook.com/perpetio/'),
             style: TextButton.styleFrom(
-                shape: CircleBorder(),
+                shape: const CircleBorder(),
                 backgroundColor: Colors.white,
                 elevation: 1),
             child: Image.asset(PathConstants.facebook)),
         TextButton(
             onPressed: () => launch('https://www.instagram.com/perpetio/'),
             style: TextButton.styleFrom(
-                shape: CircleBorder(),
+                shape: const CircleBorder(),
                 backgroundColor: Colors.white,
                 elevation: 1),
             child: Image.asset(PathConstants.instagram)),
         TextButton(
             onPressed: () => launch('https://twitter.com/perpetio'),
             style: TextButton.styleFrom(
-                shape: CircleBorder(),
+                shape: const CircleBorder(),
                 backgroundColor: Colors.white,
                 elevation: 1),
             child: Image.asset(PathConstants.twitter)),

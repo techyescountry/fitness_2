@@ -8,28 +8,31 @@ import 'package:timezone/timezone.dart' as tz;
 part 'reminder_event.dart';
 part 'reminder_state.dart';
 
-class ReminderBloc extends Bloc {
-  ReminderBloc() : super(ReminderInitial());
-
+class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
+  /* always declare generic parameters <ReminderEvent, ReminderState> 
+  here to avoid "'ReminderBloc' doesn't conform to the bound 
+  'StateStreamable<ReminderState>' of the type parameter 'B'."
+  when return BlocBuilder or BlocComsumer
+  */
   int? selectedRepeatDayIndex;
   late DateTime reminderTime;
   int? dayTime;
-
-  @override
-  Stream mapEventToState(
-    ReminderEvent event,
-  ) async* {
-    if (event is RepeatDaySelectedEvent) {
+  ReminderBloc() : super(ReminderInitial()) {
+    on<RepeatDaySelectedEvent>((event, emit) async {
       selectedRepeatDayIndex = event.index;
       dayTime = event.dayTime;
-      yield RepeatDaySelectedState(index: selectedRepeatDayIndex);
-    } else if (event is ReminderNotificationTimeEvent) {
+      emit(RepeatDaySelectedState(index: selectedRepeatDayIndex));
+    });
+
+    on<ReminderNotificationTimeEvent>((event, emit) async {
       reminderTime = event.dateTime;
-      yield ReminderNotificationState();
-    } else if (event is OnSaveTappedEvent) {
+      emit(ReminderNotificationState());
+    });
+
+    on<OnSaveTappedEvent>((event, emit) async {
       _scheuleAtParticularTimeAndDate(reminderTime, dayTime);
-      yield OnSaveTappedState();
-    }
+      emit(OnSaveTappedState());
+    });
   }
 
   Future _scheuleAtParticularTimeAndDate(

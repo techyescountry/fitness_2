@@ -27,6 +27,7 @@ class DataConstants {
   // Workouts
   static final List<WorkoutData> workouts = [
     WorkoutData(
+        id: 'yoga',
         title: TextConstants.yogaTitle,
         exercises: TextConstants.yogaExercises,
         minutes: TextConstants.yogaMinutes,
@@ -35,6 +36,7 @@ class DataConstants {
         image: PathConstants.yoga,
         exerciseDataList: [
           ExerciseData(
+            id: 'reclining',
             title: TextConstants.reclining,
             minutes: TextConstants.recliningMinutes,
             progress: 1,
@@ -50,6 +52,7 @@ class DataConstants {
             ],
           ),
           ExerciseData(
+            id: 'cowpose',
             title: TextConstants.cowPose,
             minutes: TextConstants.cowPoseMinutes,
             progress: 0.3,
@@ -58,6 +61,7 @@ class DataConstants {
             steps: [TextConstants.warriorStep1, TextConstants.warriorStep2],
           ),
           ExerciseData(
+            id: 'warriorpose',
             title: TextConstants.warriorPose,
             minutes: TextConstants.warriorPoseMinutes,
             progress: 0.99,
@@ -67,6 +71,7 @@ class DataConstants {
           ),
         ]),
     WorkoutData(
+        id: 'pilates',
         title: TextConstants.pilatesTitle,
         exercises: TextConstants.pilatesExercises,
         minutes: TextConstants.pilatesMinutes,
@@ -75,6 +80,7 @@ class DataConstants {
         image: PathConstants.pilates,
         exerciseDataList: [
           ExerciseData(
+            id: 'reclining',
             title: TextConstants.reclining,
             minutes: TextConstants.recliningMinutes,
             progress: 0.1,
@@ -83,6 +89,7 @@ class DataConstants {
             steps: [TextConstants.warriorStep1, TextConstants.warriorStep2],
           ),
           ExerciseData(
+            id: 'cowpose',
             title: TextConstants.cowPose,
             minutes: TextConstants.cowPoseMinutes,
             progress: 0.1,
@@ -91,6 +98,7 @@ class DataConstants {
             steps: [TextConstants.warriorStep1, TextConstants.warriorStep2],
           ),
           ExerciseData(
+            id: 'warriorpose',
             title: TextConstants.warriorPose,
             minutes: TextConstants.warriorPoseMinutes,
             progress: 0.0,
@@ -100,6 +108,7 @@ class DataConstants {
           ),
         ]),
     WorkoutData(
+        id: 'fullbody',
         title: TextConstants.fullBodyTitle,
         exercises: TextConstants.fullBodyExercises,
         minutes: TextConstants.fullBodyMinutes,
@@ -108,6 +117,7 @@ class DataConstants {
         image: PathConstants.fullBody,
         exerciseDataList: [
           ExerciseData(
+            id: 'reclining',
             title: TextConstants.reclining,
             minutes: TextConstants.recliningMinutes,
             progress: 0.99,
@@ -116,6 +126,7 @@ class DataConstants {
             steps: [TextConstants.warriorStep1, TextConstants.warriorStep2],
           ),
           ExerciseData(
+            id: 'cowPose',
             title: TextConstants.cowPose,
             minutes: TextConstants.cowPoseMinutes,
             progress: 0.6,
@@ -124,6 +135,7 @@ class DataConstants {
             steps: [TextConstants.warriorStep1, TextConstants.warriorStep2],
           ),
           ExerciseData(
+            id: 'warriorpose',
             title: TextConstants.warriorPose,
             minutes: TextConstants.warriorPoseMinutes,
             progress: 0.8,
@@ -133,6 +145,7 @@ class DataConstants {
           ),
         ]),
     WorkoutData(
+      id: 'stretching',
       title: TextConstants.stretchingTitle,
       exercises: TextConstants.stretchingExercises,
       minutes: TextConstants.stretchingMinutes,
@@ -141,6 +154,7 @@ class DataConstants {
       image: PathConstants.stretching,
       exerciseDataList: [
         ExerciseData(
+          id: 'reclining',
           title: TextConstants.reclining,
           minutes: TextConstants.recliningMinutes,
           progress: 0.0,
@@ -149,6 +163,7 @@ class DataConstants {
           steps: [TextConstants.warriorStep1, TextConstants.warriorStep2],
         ),
         ExerciseData(
+          id: 'cowpose',
           title: TextConstants.cowPose,
           minutes: TextConstants.cowPoseMinutes,
           progress: 0.0,
@@ -157,6 +172,7 @@ class DataConstants {
           steps: [TextConstants.warriorStep1, TextConstants.warriorStep2],
         ),
         ExerciseData(
+          id: 'warriorpose',
           title: TextConstants.warriorPose,
           minutes: TextConstants.warriorPoseMinutes,
           progress: 0.0,
@@ -170,6 +186,7 @@ class DataConstants {
 
   static final List<WorkoutData> homeWorkouts = [
     WorkoutData(
+        id: 'cardio',
         title: TextConstants.cardioTitle,
         exercises: TextConstants.cardioExercises,
         minutes: TextConstants.cardioMinutes,
@@ -178,6 +195,7 @@ class DataConstants {
         image: PathConstants.cardio,
         exerciseDataList: [
           ExerciseData(
+            id: 'reclining',
             title: TextConstants.reclining,
             minutes: TextConstants.recliningMinutes,
             progress: 1,
@@ -193,6 +211,7 @@ class DataConstants {
             ],
           ),
           ExerciseData(
+            id: 'cowpose',
             title: TextConstants.cowPose,
             minutes: TextConstants.cowPoseMinutes,
             progress: 0.3,
@@ -201,6 +220,7 @@ class DataConstants {
             steps: [TextConstants.warriorStep1, TextConstants.warriorStep2],
           ),
           ExerciseData(
+            id: 'warriorpose',
             title: TextConstants.warriorPose,
             minutes: TextConstants.warriorPoseMinutes,
             progress: 0.99,
@@ -210,6 +230,7 @@ class DataConstants {
           ),
         ]),
     WorkoutData(
+        id: 'arms',
         title: TextConstants.armsTitle,
         exercises: TextConstants.armsExercises,
         minutes: TextConstants.armsMinutes,
@@ -218,6 +239,7 @@ class DataConstants {
         image: PathConstants.cardio,
         exerciseDataList: [
           ExerciseData(
+            id: 'reclining',
             title: TextConstants.reclining,
             minutes: TextConstants.recliningMinutes,
             progress: 0.1,
@@ -226,6 +248,7 @@ class DataConstants {
             steps: [TextConstants.warriorStep1, TextConstants.warriorStep2],
           ),
           ExerciseData(
+            id: 'cowpose',
             title: TextConstants.cowPose,
             minutes: TextConstants.cowPoseMinutes,
             progress: 0.1,
@@ -234,6 +257,7 @@ class DataConstants {
             steps: [TextConstants.warriorStep1, TextConstants.warriorStep2],
           ),
           ExerciseData(
+            id: 'cowpose',
             title: TextConstants.warriorPose,
             minutes: TextConstants.warriorPoseMinutes,
             progress: 0.0,

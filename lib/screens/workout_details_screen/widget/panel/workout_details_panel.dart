@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:fitness_2/core/const/path_constants.dart';
 import 'package:fitness_2/core/const/text_constants.dart';
 import 'package:fitness_2/data/workout_data.dart';

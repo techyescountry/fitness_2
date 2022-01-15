@@ -1,6 +1,7 @@
-import 'package:fitness_2/screens/common_widgets/empty_widget.dart';
+import 'package:fitness_2/screens/forgot_password/page/forgot_password_page.dart';
 import 'package:fitness_2/screens/sign_in/widget/sign_in_content.dart';
 import 'package:fitness_2/screens/sign_up/page/sign_up_page.dart';
+import 'package:fitness_2/screens/tab_bar/bloc/page/tab_bar_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,14 +32,14 @@ class SignInPage extends StatelessWidget {
             currState is ErrorState,
         listener: (context, state) {
           if (state is NextForgotPasswordPageState) {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => const EmptyWidget())); //ForgotPasswordPage()
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const ForgotPasswordPage()));
           } else if (state is NextSignUpPageState) {
             Navigator.pushReplacement(
                 context, MaterialPageRoute(builder: (_) => const SignUpPage()));
           } else if (state is NextTabBarPageState) {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (_) => const EmptyWidget())); //TabBarPage()
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (_) => const TabBarPage()));
           } else if (state is ErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.message)),

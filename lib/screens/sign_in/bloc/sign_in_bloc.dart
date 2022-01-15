@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:fitness_2/core/service/auth_service.dart';
 import 'package:fitness_2/core/service/validation_service.dart';
+import 'package:fitness_2/screens/home/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 part 'sign_in_event.dart';

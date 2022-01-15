@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_2/data/workout_data.dart';
 
@@ -46,5 +48,10 @@ class UserData {
             workouts: [],
           )
         : [];
+  }
+
+  String toJsonString() {
+    final str = json.encode(toJson());
+    return str;
   }
 }

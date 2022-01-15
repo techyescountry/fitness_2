@@ -4,6 +4,7 @@ import 'package:fitness_2/core/const/path_constants.dart';
 import 'package:fitness_2/core/const/text_constants.dart';
 import 'package:fitness_2/data/workout_data.dart';
 import 'package:fitness_2/screens/common_widgets/fitness_button.dart';
+import 'package:fitness_2/screens/edit_account/edit_account_screen.dart';
 import 'package:fitness_2/screens/home/bloc/home_bloc.dart';
 import 'package:fitness_2/screens/home/widgets/home_exercises_card.dart';
 import 'package:fitness_2/screens/home/widgets/home_statistics.dart';
@@ -104,9 +105,8 @@ class HomeContent extends StatelessWidget {
                                 height: 120)),
                         radius: 25),
                 onTap: () async {
-                  await Navigator.of(context).push(MaterialPageRoute(
-                      builder: (_) =>
-                          const SignInPage())); //EditAccountScreen()
+                  await Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => EditAccountScreen()));
                   BlocProvider.of<HomeBloc>(context).add(ReloadImageEvent());
                 },
               );

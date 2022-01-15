@@ -1,7 +1,7 @@
-import 'package:fitness_2/screens/common_widgets/empty_widget.dart';
 import 'package:fitness_2/screens/sign_in/page/sign_in_page.dart';
 import 'package:fitness_2/screens/sign_up/bloc/sign_up_bloc.dart';
 import 'package:fitness_2/screens/sign_up/widget/sign_up_content.dart';
+import 'package:fitness_2/screens/tab_bar/bloc/page/tab_bar_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,8 +23,8 @@ class SignUpPage extends StatelessWidget {
             currState is ErrorState,
         listener: (context, state) {
           if (state is NextTabBarPageState) {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (_) => const EmptyWidget())); //TabBarPage()
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (_) => const TabBarPage()));
           } else if (state is NextSignInPageState) {
             Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (_) => const SignInPage()));
