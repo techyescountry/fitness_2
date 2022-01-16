@@ -25,6 +25,7 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State {
   String? photoUrl;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: _buildContext(context));
@@ -33,7 +34,7 @@ class _SettingsScreenState extends State {
   BlocProvider _buildContext(BuildContext context) {
     return BlocProvider<SettingsBloc>(
       create: (context) => SettingsBloc(),
-      child: BlocConsumer(
+      child: BlocConsumer<SettingsBloc, SettingsState>(
         buildWhen: (_, currState) => currState is SettingsInitial,
         builder: (context, state) {
           final bloc = BlocProvider.of<SettingsBloc>(context);
@@ -59,7 +60,7 @@ class _SettingsScreenState extends State {
           padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
           child: Column(children: [
             Stack(alignment: Alignment.topRight, children: [
-              BlocBuilder(
+              BlocBuilder<SettingsBloc, SettingsState>(
                 buildWhen: (_, currState) =>
                     currState is SettingsReloadImageState,
                 builder: (context, state) {
@@ -102,7 +103,7 @@ class _SettingsScreenState extends State {
                       color: ColorConstants.primaryColor)),
             ]),
             const SizedBox(height: 15),
-            BlocBuilder(
+            BlocBuilder<SettingsBloc, SettingsState>(
               buildWhen: (_, currState) =>
                   currState is SettingsReloadDisplayNameState,
               builder: (context, state) {
@@ -122,8 +123,8 @@ class _SettingsScreenState extends State {
                   style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
               withArrow: true,
               onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => ReminderPage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const ReminderPage()));
               },
             ),
             if (!kIsWeb)
@@ -150,14 +151,14 @@ class _SettingsScreenState extends State {
                         TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
                 onTap: () {
                   AuthService.signOut();
-                  Navigator.pushReplacement(
-                      context, MaterialPageRoute(builder: (_) => SignInPage()));
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (_) => const SignInPage()));
                 }),
             const SizedBox(height: 15),
             const Text(TextConstants.joinUs,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
             const SizedBox(height: 15),
-            const _createJoinSocialMedia(),
+            _createJoinSocialMedia(),
           ]),
         ),
       ),
@@ -165,38 +166,31 @@ class _SettingsScreenState extends State {
   }
 }
 
-class _createJoinSocialMedia extends StatelessWidget {
-  const _createJoinSocialMedia({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        TextButton(
-            onPressed: () => launch('https://www.facebook.com/perpetio/'),
-            style: TextButton.styleFrom(
-                shape: const CircleBorder(),
-                backgroundColor: Colors.white,
-                elevation: 1),
-            child: Image.asset(PathConstants.facebook)),
-        TextButton(
-            onPressed: () => launch('https://www.instagram.com/perpetio/'),
-            style: TextButton.styleFrom(
-                shape: const CircleBorder(),
-                backgroundColor: Colors.white,
-                elevation: 1),
-            child: Image.asset(PathConstants.instagram)),
-        TextButton(
-            onPressed: () => launch('https://twitter.com/perpetio'),
-            style: TextButton.styleFrom(
-                shape: const CircleBorder(),
-                backgroundColor: Colors.white,
-                elevation: 1),
-            child: Image.asset(PathConstants.twitter)),
-      ],
-    );
-  }
+Widget _createJoinSocialMedia() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      TextButton(
+          onPressed: () => launch('https://www.facebook.com/perpetio/'),
+          style: TextButton.styleFrom(
+              shape: const CircleBorder(),
+              backgroundColor: Colors.white,
+              elevation: 1),
+          child: Image.asset(PathConstants.facebook)),
+      TextButton(
+          onPressed: () => launch('https://www.instagram.com/perpetio/'),
+          style: TextButton.styleFrom(
+              shape: const CircleBorder(),
+              backgroundColor: Colors.white,
+              elevation: 1),
+          child: Image.asset(PathConstants.instagram)),
+      TextButton(
+          onPressed: () => launch('https://twitter.com/perpetio'),
+          style: TextButton.styleFrom(
+              shape: const CircleBorder(),
+              backgroundColor: Colors.white,
+              elevation: 1),
+          child: Image.asset(PathConstants.twitter)),
+    ],
+  );
 }

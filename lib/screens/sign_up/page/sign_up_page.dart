@@ -1,7 +1,7 @@
 import 'package:fitness_2/screens/sign_in/page/sign_in_page.dart';
 import 'package:fitness_2/screens/sign_up/bloc/sign_up_bloc.dart';
 import 'package:fitness_2/screens/sign_up/widget/sign_up_content.dart';
-import 'package:fitness_2/screens/tab_bar/bloc/page/tab_bar_page.dart';
+import 'package:fitness_2/screens/tab_bar/page/tab_bar_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -4,7 +4,7 @@ import 'package:fitness_2/core/const/global_constants.dart';
 import 'package:fitness_2/core/service/notification_service.dart';
 import 'package:fitness_2/data/user_data.dart';
 import 'package:fitness_2/screens/onboarding/page/onboarding_page.dart';
-import 'package:fitness_2/screens/tab_bar/bloc/page/tab_bar_page.dart';
+import 'package:fitness_2/screens/tab_bar/page/tab_bar_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
