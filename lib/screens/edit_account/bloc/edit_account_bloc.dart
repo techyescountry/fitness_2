@@ -9,9 +9,10 @@ import 'package:meta/meta.dart';
 part 'edit_account_event.dart';
 part 'edit_account_state.dart';
 
-class EditAccountBloc extends Bloc {
+class EditAccountBloc extends Bloc<EditAccountEvent, EditAccountState> {
   EditAccountBloc() : super(EditAccountInitial()) {
-    on<EditAccountEvent>((event, emit) async {
+    on<EditAccountEvent>(
+        (EditAccountEvent event, Emitter<EditAccountState> emit) async {
       try {
         final XFile? image =
             await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -28,7 +29,8 @@ class EditAccountBloc extends Bloc {
       }
     });
 
-    on<ChangeUserData>((event, emit) async {
+    on<ChangeUserData>(
+        (ChangeUserData event, Emitter<EditAccountState> emit) async {
       emit(EditAccountProgress());
       try {
         await UserService.changeUserData(
@@ -38,7 +40,7 @@ class EditAccountBloc extends Bloc {
         emit(EditAccountInitial());
       } catch (e) {
         emit(EditAccountError(e.toString()));
-        await Future.delayed(Duration(seconds: 1));
+        await Future.delayed(const Duration(seconds: 1));
         emit(EditAccountInitial());
       }
     });

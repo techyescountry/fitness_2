@@ -21,14 +21,14 @@ class ReminderPage extends StatelessWidget {
             appBar: AppBar(
               centerTitle: false,
               titleSpacing: 0,
-              title: Text(
+              title: const Text(
                 TextConstants.reminder,
                 style: TextStyle(color: Colors.black, fontSize: 18),
               ),
               backgroundColor: Colors.transparent,
               elevation: 0,
               leading: IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_back_ios_new,
                   color: ColorConstants.primaryColor,
                 ),
@@ -38,7 +38,7 @@ class ReminderPage extends StatelessWidget {
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerFloat,
             floatingActionButton: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: FitnessButton(
                 title: TextConstants.save,
                 onTap: () {
@@ -63,7 +63,7 @@ class ReminderPage extends StatelessWidget {
             ReminderNotificationTimeEvent(dateTime: DateTime.now()),
           );
         }
-        return ReminderContent();
+        return const ReminderContent();
       },
       listenWhen: (_, currState) => currState is OnSaveTappedState,
       listener: (context, state) {

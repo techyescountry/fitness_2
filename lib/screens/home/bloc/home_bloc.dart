@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_2/core/const/data_constants.dart';
 import 'package:fitness_2/core/service/auth_service.dart';
 import 'package:fitness_2/core/service/data_service.dart';
@@ -15,12 +16,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   int timeSent = 0;
 
   HomeBloc() : super(HomeInitial()) {
-    on<HomeInitialEvent>((event, emit) async {
+    on<HomeInitialEvent>(
+        (HomeInitialEvent event, Emitter<HomeState> emit) async {
       workouts = await DataService.getWorkoutsForUser();
       emit(WorkoutsGotState(workouts: workouts));
     });
 
-    on<ReloadImageEvent>((event, emit) async {
+    on<ReloadImageEvent>(
+        (ReloadImageEvent event, Emitter<HomeState> emit) async {
       String? photoURL = await UserStorageService.readSecureData('image');
       if (photoURL == null) {
         photoURL = AuthService.auth.currentUser?.photoURL;
@@ -31,8 +34,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(ReloadImageState(photoURL: photoURL));
     });
 
-    on<ReloadDisplayNameEvent>((event, emit) async {
-      final displayName = await UserStorageService.readSecureData('name');
+    on<ReloadDisplayNameEvent>(
+        (ReloadDisplayNameEvent event, Emitter<HomeState> emit) async {
+      final User? user = FirebaseAuth.instance.currentUser;
+      final displayName = user?.displayName ?? "No Username";
+      // orig code: final displayName = await UserStorageService.readSecureData('name');
+      print('this is 2nd $displayName'); //NOTE: no print here
       emit(ReloadDisplayNameState(displayName: displayName));
     });
   }

@@ -18,18 +18,21 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
   late DateTime reminderTime;
   int? dayTime;
   ReminderBloc() : super(ReminderInitial()) {
-    on<RepeatDaySelectedEvent>((event, emit) async {
+    on<RepeatDaySelectedEvent>(
+        (RepeatDaySelectedEvent event, Emitter<ReminderState> emit) async {
       selectedRepeatDayIndex = event.index;
       dayTime = event.dayTime;
       emit(RepeatDaySelectedState(index: selectedRepeatDayIndex));
     });
 
-    on<ReminderNotificationTimeEvent>((event, emit) async {
+    on<ReminderNotificationTimeEvent>((ReminderNotificationTimeEvent event,
+        Emitter<ReminderState> emit) async {
       reminderTime = event.dateTime;
       emit(ReminderNotificationState());
     });
 
-    on<OnSaveTappedEvent>((event, emit) async {
+    on<OnSaveTappedEvent>(
+        (OnSaveTappedEvent event, Emitter<ReminderState> emit) async {
       _scheuleAtParticularTimeAndDate(reminderTime, dayTime);
       emit(OnSaveTappedState());
     });
@@ -69,7 +72,7 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
         .subtract(Duration(hours: timezoneOffset.inHours));
 
     return scheduleDate.isBefore(now)
-        ? scheduleDate.add(Duration(days: 1))
+        ? scheduleDate.add(const Duration(days: 1))
         : scheduleDate;
   }
 

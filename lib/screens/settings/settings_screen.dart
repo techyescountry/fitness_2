@@ -52,7 +52,7 @@ class _SettingsScreenState extends State {
 
   Widget _settingsContent(BuildContext context) {
     final User? user = FirebaseAuth.instance.currentUser;
-    // final displayName = user?.displayName ?? "No Username";
+
     photoUrl = user?.photoURL;
     return SafeArea(
       child: SingleChildScrollView(
@@ -109,7 +109,7 @@ class _SettingsScreenState extends State {
               builder: (context, state) {
                 final displayName = state is SettingsReloadDisplayNameState
                     ? state.displayName
-                    : null;
+                    : 'no username'; //NOTE: CHANGE back to null
                 return Text(
                   '$displayName',
                   style: const TextStyle(

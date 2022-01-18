@@ -9,7 +9,8 @@ part 'change_password_state.dart';
 class ChangePasswordBloc
     extends Bloc<ChangePasswordEvent, ChangePasswordState> {
   ChangePasswordBloc() : super(ChangePasswordInitial()) {
-    on<ChangePassword>((event, emit) async {
+    on<ChangePassword>(
+        (ChangePassword event, Emitter<ChangePasswordState> emit) async {
       emit(ChangePasswordProgress());
       try {
         await UserService.changePassword(newPass: event.newPass);

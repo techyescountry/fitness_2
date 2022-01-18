@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_2/core/const/color_constants.dart';
 import 'package:fitness_2/core/const/data_constants.dart';
 import 'package:fitness_2/core/const/path_constants.dart';
@@ -63,8 +64,11 @@ class HomeContent extends StatelessWidget {
                 buildWhen: (_, currState) =>
                     currState is ReloadDisplayNameState,
                 builder: (context, state) {
+                  final User? user = FirebaseAuth.instance.currentUser;
+
+                  //NOTE: ORIGINAL CODE HERE, REMOVE LINES ABOVE
                   final displayName = state is ReloadDisplayNameState
-                      ? state.displayName
+                      ? user?.displayName //orig is state.displayName
                       : '[name]';
                   return Text(
                     'Hi, $displayName',
